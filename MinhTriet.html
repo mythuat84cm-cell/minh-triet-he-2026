@@ -1541,32 +1541,8 @@
       <h2 class="section-title">Minh Triết Còn Nhỏ</h2>
       <p class="section-sub">Những hình ảnh và thước phim đáng yêu từ những ngày đầu đời</p>
     </div>
-    <div class="video-grid reveal" style="margin-bottom:40px;">
-      <div class="video-card">
-        <video controls preload="metadata">
-          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200128_084805.mp4" type="video/mp4"/>
-          Trình duyệt không hỗ trợ video.
-        </video>
-        <div class="video-label">🎥 Video 1</div>
-      </div>
-      <div class="video-card">
-        <video controls preload="metadata">
-          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200131_173916.mp4" type="video/mp4"/>
-          Trình duyệt không hỗ trợ video.
-        </video>
-        <div class="video-label">🎥 Video 2</div>
-      </div>
-      <div class="video-card">
-        <video controls preload="metadata">
-          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200817_165942.mp4" type="video/mp4"/>
-          Trình duyệt không hỗ trợ video.
-        </video>
-        <div class="video-label">🎥 Video 3</div>
-      </div>
-    </div>
+    <div class="video-grid reveal" id="young-video-grid" style="margin-bottom:40px;"></div>
     <div class="portrait-grid" id="young-grid" role="list" aria-label="Ảnh Minh Triết còn nhỏ"></div>
-    <p class="media-download-note reveal">📼 Video định dạng cũ (.avi/.mov) — nhấn "Tải về" để xem (trình duyệt không phát trực tiếp được):</p>
-    <div class="media-download-list reveal" id="young-download-list" aria-label="Video định dạng cũ"></div>
   </div>
 </section>
 
@@ -1991,7 +1967,6 @@ const birthdayPhotos = [
   '67b2ff7c7da792f9cbb6.jpg',
   '6aa26192e2490d175458.jpg',
   '6bd4b7e4373fd861812e.jpg',
-  '6cac036581be6ee037af.jpg',
   '6da6c6ae4475ab2bf264.jpg',
   '6fbd211badc0429e1bd1.jpg',
   '6ff56101e2da0d8454cb.jpg',
@@ -2115,15 +2090,18 @@ const youngPhotos = [
   'IMG_7377.JPG'
 ].map(name => YOUNG_DIR + name);
 
-const youngOldVideos = [
-  'MOV0016A.avi',
-  'MOV0023A.avi',
-  'MOV0026A.avi',
-  'MOV0028A.avi',
-  'MOV0030A.avi',
-  'MOV0038A.avi',
-  'MOV0048A.avi',
-  'MOV0074A.avi'
+const youngVideos = [
+  '20200128_084805.mp4',
+  '20200131_173916.mp4',
+  '20200817_165942.mp4',
+  'MOV0016A.mp4',
+  'MOV0023A.mp4',
+  'MOV0026A.mp4',
+  'MOV0028A.mp4',
+  'MOV0030A.mp4',
+  'MOV0038A.mp4',
+  'MOV0048A.mp4',
+  'MOV0074A.mp4'
 ].map(name => YOUNG_DIR + name);
 
 const DOCS_DIR = 'TÀI LIỆU QUÝ - TÁC GIẢ - LÊ VĂN THIỆN - GIÁM ĐỐC VÙNG - CÔNG TY BHNT DAICHI-LIFE/';
@@ -2412,23 +2390,27 @@ photoOffset += birthdayPhotos.length;
 renderGrid(document.getElementById('young-grid'), youngPhotos, 'Ảnh Minh Triết còn nhỏ', photoOffset);
 photoOffset += youngPhotos.length;
 
-// ---- YOUNG CHILDHOOD OLD-FORMAT VIDEO DOWNLOADS ----
-const youngDownloadList = document.getElementById('young-download-list');
-youngOldVideos.forEach(src => {
-  const name = decodeURIComponent(src.split('/').pop());
-  const item = document.createElement('div');
-  item.className = 'media-download-item';
-  const label = document.createElement('span');
-  label.className = 'media-name';
-  label.textContent = `🎞️ ${name}`;
-  const link = document.createElement('a');
-  link.className = 'media-dl-btn';
-  link.href = src;
-  link.setAttribute('download', name);
-  link.textContent = 'Tải về';
-  item.appendChild(label);
-  item.appendChild(link);
-  youngDownloadList.appendChild(item);
+// ---- YOUNG CHILDHOOD VIDEOS ----
+const youngVideoGrid = document.getElementById('young-video-grid');
+youngVideos.forEach((src, i) => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+
+  const video = document.createElement('video');
+  video.controls = true;
+  video.preload = 'metadata';
+  const source = document.createElement('source');
+  source.src = src;
+  source.type = 'video/mp4';
+  video.appendChild(source);
+
+  const label = document.createElement('div');
+  label.className = 'video-label';
+  label.textContent = `🎥 Video ${i + 1}`;
+
+  card.appendChild(video);
+  card.appendChild(label);
+  youngVideoGrid.appendChild(card);
 });
 
 const albumOffset = photoOffset;
