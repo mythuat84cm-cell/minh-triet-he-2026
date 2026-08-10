@@ -695,6 +695,128 @@
     }
 
     /* =========================================
+       BIRTHDAY / YOUNG CHILDHOOD SECTIONS
+    ========================================= */
+    .birthday-section {
+      padding: 100px 0;
+      background: radial-gradient(ellipse at center, rgba(255,107,107,0.08) 0%, transparent 70%);
+    }
+    .young-section {
+      padding: 100px 0;
+      background: radial-gradient(ellipse at center, rgba(192,132,252,0.10) 0%, transparent 70%);
+    }
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border-radius: 100px;
+      border: 1px solid rgba(20,50,77,0.18);
+      background: rgba(255,255,255,0.55);
+      color: rgba(20,50,77,0.8);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .pill-btn:hover {
+      background: linear-gradient(135deg, var(--coral), var(--peach));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(255,107,107,0.4);
+      transform: translateY(-3px);
+    }
+    .pill-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+      transform: none;
+    }
+    .media-download-note {
+      color: rgba(20,50,77,0.6);
+      font-size: 0.9rem;
+      margin: 8px 0 16px;
+    }
+    .media-download-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .media-download-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(20,50,77,0.08);
+      border-radius: 16px;
+      padding: 14px 20px;
+      flex-wrap: wrap;
+    }
+    .media-download-item .media-name {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+    .media-download-item .media-dl-btn {
+      flex-shrink: 0;
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    /* =========================================
+       DOCUMENTS SECTION
+    ========================================= */
+    .docs-section {
+      padding: 100px 0 120px;
+    }
+    .docs-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(20,50,77,0.08);
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .doc-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(20,50,77,0.15);
+    }
+    .doc-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .doc-name {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    .doc-ext {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(20,50,77,0.5);
+    }
+
+    /* =========================================
        VIDEO SECTION
     ========================================= */
     .video-section {
@@ -1155,8 +1277,11 @@
     <li><a href="#class">Lớp Học</a></li>
     <li><a href="#school">Trường</a></li>
     <li><a href="#family">Gia Đình</a></li>
+    <li><a href="#birthday">Sinh Nhật</a></li>
+    <li><a href="#young">Còn Nhỏ</a></li>
     <li><a href="#videos">Video</a></li>
     <li><a href="#gallery">Album Ảnh</a></li>
+    <li><a href="#docs">Tài Liệu</a></li>
   </ul>
 </nav>
 
@@ -1391,6 +1516,60 @@
   </div>
 </section>
 
+<!-- ========== BIRTHDAY ========== -->
+<section class="birthday-section" id="birthday">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">🎂 Sinh Nhật</span>
+      <h2 class="section-title">Kỷ Niệm Sinh Nhật</h2>
+      <p class="section-sub">Những bữa tiệc sinh nhật rộn ràng tiếng cười của Minh Triết</p>
+    </div>
+    <div class="gallery-masonry" id="birthday-grid" role="list" aria-label="Ảnh sinh nhật Minh Triết"></div>
+    <div class="load-more-wrap reveal">
+      <button id="birthday-load-more-btn" class="pill-btn" aria-label="Xem thêm ảnh sinh nhật">
+        <span id="birthday-load-more-text">Xem Thêm Ảnh 🎉</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== YOUNG CHILDHOOD ========== -->
+<section class="young-section" id="young">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">🍼 Ngày Xưa</span>
+      <h2 class="section-title">Minh Triết Còn Nhỏ</h2>
+      <p class="section-sub">Những hình ảnh và thước phim đáng yêu từ những ngày đầu đời</p>
+    </div>
+    <div class="video-grid reveal" style="margin-bottom:40px;">
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200128_084805.mp4" type="video/mp4"/>
+          Trình duyệt không hỗ trợ video.
+        </video>
+        <div class="video-label">🎥 Video 1</div>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200131_173916.mp4" type="video/mp4"/>
+          Trình duyệt không hỗ trợ video.
+        </video>
+        <div class="video-label">🎥 Video 2</div>
+      </div>
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/20200817_165942.mp4" type="video/mp4"/>
+          Trình duyệt không hỗ trợ video.
+        </video>
+        <div class="video-label">🎥 Video 3</div>
+      </div>
+    </div>
+    <div class="portrait-grid" id="young-grid" role="list" aria-label="Ảnh Minh Triết còn nhỏ"></div>
+    <p class="media-download-note reveal">📼 Video định dạng cũ (.avi/.mov) — nhấn "Tải về" để xem (trình duyệt không phát trực tiếp được):</p>
+    <div class="media-download-list reveal" id="young-download-list" aria-label="Video định dạng cũ"></div>
+  </div>
+</section>
+
 <!-- ========== VIDEOS ========== -->
 <section class="video-section" id="videos">
   <div class="container">
@@ -1448,6 +1627,18 @@
   </div>
   <div class="lb-thumb-strip" id="lb-thumbs" aria-label="Ảnh thu nhỏ"></div>
 </div>
+
+<!-- ========== DOCUMENTS ========== -->
+<section class="docs-section" id="docs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">📁 Tài Liệu</span>
+      <h2 class="section-title">Tài Liệu Đính Kèm</h2>
+      <p class="section-sub">Tài liệu đào tạo của tác giả Lê Văn Thiện — nhấn để tải về</p>
+    </div>
+    <div class="docs-list" id="docs-list" role="list" aria-label="Danh sách tài liệu"></div>
+  </div>
+</section>
 
 <!-- ========== FOOTER ========== -->
 <footer>
@@ -1724,6 +1915,303 @@ const familyPhotos = [
   'z8129938939315_37c8a91e47c376fffea6b2b69bc9a24d.jpg'
 ].map(name => FAMILY_DIR + name);
 
+const BIRTHDAY_DIR = 'hinh sinh nhat Minh Triet/';
+const birthdayPhotos = [
+  '0030c61446cfa991f0de.jpg',
+  '027a0c0b8dd0628e3bc1.jpg',
+  '02cc03188fc3609d39d2.jpg',
+  '02de2a87aa5c45021c4d.jpg',
+  '06a0e46468bf87e1deae.jpg',
+  '085fdcc5501ebf40e60f.jpg',
+  '08dee42e66f589abd0e4.jpg',
+  '13045826d4fd3ba362ec.jpg',
+  '13e51d579d8c72d22b9d.jpg',
+  '14a0122090fb7fa526ea.jpg',
+  '15a3e67665ad8af3d3bc.jpg',
+  '19717db7f16c1e32477d.jpg',
+  '1a547646f49d1bc3428c.jpg',
+  '1a9db73134eadbb482fb.jpg',
+  '1af6d5a4587fb721ee6e.jpg',
+  '1b45062984f26bac32e3.jpg',
+  '1c52f7717baa94f4cdbb.jpg',
+  '1c93ae462e9dc1c3988c.jpg',
+  '1d31fab87763983dc172.jpg',
+  '1ec0e7a16a7a8524dc6b.jpg',
+  '20160316_184925.jpg',
+  '20160412_182521.jpg',
+  '20160412_183105.jpg',
+  '20567778fba314fd4db2.jpg',
+  '20684dfdc0262f787637.jpg',
+  '208ffe027dd99287cbc8.jpg',
+  '2453b1e63c3dd3638a2c.jpg',
+  '255a6ac6e91d06435f0c.jpg',
+  '26dd3b3db8e657b80ef7.jpg',
+  '2b9c902210f9ffa7a6e8.jpg',
+  '2cb72f02acd943871ac8.jpg',
+  '2d6d87980443eb1db252.jpg',
+  '2f638151018aeed4b79b.jpg',
+  '2f8c71f1fc2a13744a3b.jpg',
+  '2fed5562d7b938e761a8.jpg',
+  '3120acfe2b25c47b9d34.jpg',
+  '32ec2302a3d94c8715c8.jpg',
+  '34dc4c9ccf4720197956.jpg',
+  '35ac484acb9124cf7d80.jpg',
+  '35dd17f79b2c74722d3d.jpg',
+  '36b84d21cefa21a478eb.jpg',
+  '382633edbe3651680827.jpg',
+  '388cb41338c8d7968ed9.jpg',
+  '3e7f4295c04e2f10765f.jpg',
+  '3f673d67bebc51e208ad.jpg',
+  '3fd5fc4371989ec6c789.jpg',
+  '4069c780475ba805f14a.jpg',
+  '41c23bd1b60a5954001b.jpg',
+  '425dd6dc5507ba59e316.jpg',
+  '42f92fc6a21d4d43140c.jpg',
+  '4469fda27e799127c868.jpg',
+  '4620fda57f7e9020c96f.jpg',
+  '49c2fff87f23907dc932.jpg',
+  '4cc9bc6d30b6dfe886a7.jpg',
+  '4e640a4d899666c83f87.jpg',
+  '50f238e6b43d5b63022c.jpg',
+  '510b856f07b4e8eab1a5.jpg',
+  '51cf4449c79228cc7183.jpg',
+  '552074e0f93b16654f2a.jpg',
+  '55be31e1b23a5d64042b.jpg',
+  '57bfa8b72b6cc4329d7d.jpg',
+  '5846f5e5773e9860c12f.jpg',
+  '592e14899652790c2043.jpg',
+  '5a2cf0f97d22927ccb33.jpg',
+  '5a36089d8a4665183c57.jpg',
+  '5c810e2082fb6da534ea.jpg',
+  '5d51c9374beca4b2fdfd.jpg',
+  '5eeb69e1eb3a04645d2b.jpg',
+  '63b92637abec44b21dfd.jpg',
+  '644127e3a5384a661329.jpg',
+  '678caca32e78c1269869.jpg',
+  '67b2ff7c7da792f9cbb6.jpg',
+  '6aa26192e2490d175458.jpg',
+  '6bd4b7e4373fd861812e.jpg',
+  '6cac036581be6ee037af.jpg',
+  '6da6c6ae4475ab2bf264.jpg',
+  '6fbd211badc0429e1bd1.jpg',
+  '6ff56101e2da0d8454cb.jpg',
+  '70dee26c62b78de9d4a6.jpg',
+  '75e7ceee4c35a36bfa24.jpg',
+  '78a421aea2754d2b1464.jpg',
+  '796289530a88e5d6bc99.jpg',
+  '799dfc3671ed9eb3c7fc.jpg',
+  '79f2b1a93272dd2c8463.jpg',
+  '7a6af6d6760d9953c01c.jpg',
+  '7d742d5fae8441da1895.jpg',
+  '7f4819f995227a7c2333.jpg',
+  '80e82607a5dc4a8213cd.jpg',
+  '81b0207fada442fa1bb5.jpg',
+  '889bcb244bffa4a1fdee.jpg',
+  '8af5b6373aecd5b28cfd.jpg',
+  '8b5c26ebab30446e1d21.jpg',
+  '8ff309e48a3f65613c2e.jpg',
+  '902509ed8a3665683c27.jpg',
+  '90ea4c8ac1512e0f7740.jpg',
+  '9594dfc15c1ab344ea0b.jpg',
+  '95b911519c8a73d42a9b.jpg',
+  '9746871d07c6e898b1d7.jpg',
+  '97acf3aa71719e2fc760.jpg',
+  '9a7352f0d02b3f75663a.jpg',
+  '9b5963feef25007b5934.jpg',
+  '9da6f4b0756b9a35c37a.jpg',
+  'a0823af8b823577d0e32.jpg',
+  'a1855b0dd9d636886fc7.jpg',
+  'a32600e78d3c62623b2d.jpg',
+  'a48645bbc860273e7e71.jpg',
+  'a6647e3dfde612b84bf7.jpg',
+  'a8916600ebdb04855dca.jpg',
+  'a9bcf395714e9e10c75f.jpg',
+  'aabf9f731da8f2f6abb9.jpg',
+  'ad510144839f6cc1358e.jpg',
+  'adc8efae62758d2bd464.jpg',
+  'adfad9bc5a67b539ec76.jpg',
+  'aeafb0413d9ad2c48b8b.jpg',
+  'aee15f22d3f93ca765e8.jpg',
+  'b0d4d7ad5576ba28e367.jpg',
+  'b0f16a15e9ce06905fdf.jpg',
+  'b21a9d7c1fa7f0f9a9b6.jpg',
+  'b922861c0bc7e499bdd6.jpg',
+  'b9ba3949ba9255cc0c83.jpg',
+  'b9d00fd78d0c62523b1d.jpg',
+  'ba3ac3d54f0ea050f91f.jpg',
+  'bb63fbd7760c9952c01d.jpg',
+  'bf1614e3973878662129.jpg',
+  'c04da5582683c9dd9092.jpg',
+  'c1c8103f92e47dba24f5.jpg',
+  'c217950316d8f986a0c9.jpg',
+  'c64dc58d4956a608ff47.jpg',
+  'c836e3956f4e8010d95f.jpg',
+  'ca5188830a58e506bc49.jpg',
+  'cc1cbb7f39a4d6fa8fb5.jpg',
+  'cdd86810ebcb04955dda.jpg',
+  'd1c439d4ba0f55510c1e.jpg',
+  'd27b47a1c57a2a24736b.jpg',
+  'd28c68afea74052a5c65.jpg',
+  'd36ac1ae4275ad2bf464.jpg',
+  'd478da3a59e1b6bfeff0.jpg',
+  'd58d776efab515eb4ca4.jpg',
+  'd662afe92d32c26c9b23.jpg',
+  'd666e10b6cd0838edac1.jpg',
+  'd78db93b3ae0d5be8cf1.jpg',
+  'd96905e88733686d3122.jpg',
+  'd97832d8b0035f5d0612.jpg',
+  'da1ee64e6b9584cbdd84.jpg',
+  'db7f5e48dd9332cd6b82.jpg',
+  'dc615093d2483d166459.jpg',
+  'dc7a9d971e4cf112a85d.jpg',
+  'dd05b597394cd6128f5d.jpg',
+  'decff50978d2978ccec3.jpg',
+  'dfbfdb3056ebb9b5e0fa.jpg',
+  'e04a0ad88603695d3012.jpg',
+  'e07e5de5de3e3160682f.jpg',
+  'e0982aa0aa7b45251c6a.jpg',
+  'e11e7755f48e1bd0429f.jpg',
+  'e34c5985d45e3b00624f.jpg',
+  'e5d95ea2dc7933276a68.jpg',
+  'e73ed26052bbbde5e4aa.jpg',
+  'e864bf7333a8dcf685b9.jpg',
+  'e8dfca6a48b1a7effea0.jpg',
+  'ec35032780fc6fa236ed.jpg',
+  'ecc87f97ff4c1012495d.jpg',
+  'efdef6087ad3958dccc2.jpg',
+  'f00a4582c85927077e48.jpg',
+  'f12133a2b0795f270668.jpg',
+  'f1381cc991127e4c2703.jpg',
+  'f65911de92057d5b2414.jpg',
+  'f71648baca61253f7c70.jpg',
+  'f722d13f52e4bdbae4f5.jpg',
+  'f90c2430a4eb4bb512fa.jpg',
+  'f9bce1f861238e7dd732.jpg',
+  'f9c03e21bdfa52a40beb.jpg',
+  'fa4185b30668e936b079.jpg',
+  'fa604b7cc8a727f97eb6.jpg',
+  'fafa7e30fceb13b54afa.jpg',
+  'fb2022acaf7740291966.jpg',
+  'fcb9f3b6716d9e33c77c.jpg',
+  'fd268ff4032fec71b53e.jpg',
+  'fddd1d079edc718228cd.jpg',
+  'fe7c759cf84717194e56.jpg',
+  'IMG_20160221_230116.jpg',
+  'IMG_20160223_195318.jpg'
+].map(name => BIRTHDAY_DIR + name);
+
+const YOUNG_DIR = 'ẢNH - VIDEO MINH TRIẾT CÒN NHỎ/';
+const youngPhotos = [
+  '0918121125-00.jpg',
+  '2013-01-27 19.21.39.jpg',
+  '2013-02-25 17.58.58.jpg',
+  '2013-02-25 18.00.51.jpg',
+  'IMG_6510.JPG',
+  'IMG_6517.JPG',
+  'IMG_6522.JPG',
+  'IMG_6660.JPG',
+  'IMG_7075.JPG',
+  'IMG_7136.JPG',
+  'IMG_7377.JPG'
+].map(name => YOUNG_DIR + name);
+
+const youngOldVideos = [
+  'MOV0016A.avi',
+  'MOV0023A.avi',
+  'MOV0026A.avi',
+  'MOV0028A.avi',
+  'MOV0030A.avi',
+  'MOV0038A.avi',
+  'MOV0048A.avi',
+  'MOV0074A.avi'
+].map(name => YOUNG_DIR + name);
+
+const DOCS_DIR = 'TÀI LIỆU QUÝ - TÁC GIẢ - LÊ VĂN THIỆN - GIÁM ĐỐC VÙNG - CÔNG TY BHNT DAICHI-LIFE/';
+const docs = [
+  '1_4 LÝ DO THÁI ĐỘ LÀ YẾU TỐ TẠO THÀNH CÔNG.pptx',
+  '10_6 BAI HOC SOI DAU DAN.pptx',
+  '11_10 CÁCH LÃNH ĐẠO.pptx',
+  '12_10 CÁCH XỬ LÝ VẤN ĐỀ.pptx',
+  '13_10 MÔ HÌNH QUẢN TRỊ SỰ THAY DỔI.pptx',
+  '14_10 BAI HOC TU SAN BAY.pptx',
+  '15_BAI HOC TU TRUMP.pptx',
+  '16_HINH THANH KY LUAT.pptx',
+  '17_HINH THUC DAU TU & QUAN TRI DAU TU.ppt',
+  '18_NGHE THUAT GIAO TIEP.pptx',
+  '19_QUAN LY THOI GIAN - CONG VIEC.pptx',
+  '2_4 PHONG CACH CON NGUOI.pptx',
+  '20_TAI CHINH CA NHAN.pptx',
+  '21_TAM LY HAI CHUOI.pptx',
+  '22_TƯ DUY PHÁT TRIỂN.pptx',
+  '23_TU VAN HUONG NGHIEP.pptx',
+  '24_VAN HOA DOANH NGHIEP.pptx',
+  '25_CHỊU 3 NỖI KHỔ ĐỔI CUỘC ĐỜI.pptx',
+  '26_5 KỸ NĂNG THIẾT YẾU THÀNH LÃNH ĐẠO GIỎI.pptx',
+  '27_15 TỐ CHẤT CỦA LÃNH ĐẠO TÀI NĂNG.pptx',
+  '28_BÀI HỌC VỀ CON NGƯỜI.pptx',
+  '29_7 ĐIỀU CỐT LÕI NGƯỜI THÀNH CÔNG CẦN KIỂM SOÁT.pptx',
+  '3_4 YẾU TỐ GIÚP THUYẾT TRÌNH HIỆU QUẢ.pptx',
+  '30_15 LÝ DO ĐỂ BẠN SỐNG MỘT CUỘC ĐỜI TỐT ĐẸP.pptx',
+  '31_6 NGUYEN TAC TUYET VOI CUA LANH DAO.pptx',
+  '32_TAM HON LANH DAO.pptx',
+  '33_TƯ DUY NHƯ CEO.pptx',
+  '34_SỰ ĐÁNH ĐỔI & NHỮNG KẺ ĐỘC HẠI.pptx',
+  '35_48 NGUYÊN TẮC QUYỀN LỰC.pptx',
+  '36_CỐ VẤN CHO NGƯỜI KHÁC.pptx',
+  '37_THÁI ĐỘ HAY TRÌNH ĐỘ.pptx',
+  '38_TẠI SAO CẦN BẢO HIỂM NHÂN THỌ.pptx',
+  '39_TẠI SAO KHÁCH HÀNG TỪ CHỐI BẢO HIỂM.pptx',
+  '4_5 BÀI HỌC KHỔNG TỬ.pptx',
+  '40_YẾU TỐ CỐT LÕI CỦA NGƯỜI TƯ VẤN TÀI CHÍNH THÀNH CÔNG.pptx',
+  '41_CHINH PHỤC TÂM LÝ KHÁCH HÀNG.pptx',
+  '42_KỸ NĂNG COACHING.pptx',
+  '43_TẠI SAO PHẢI CHĂM SÓC KHÁCH HÀNG CŨ.pptx',
+  '44_ĐIỂM YẾU TRONG BẢN CHẤT CON NGƯỜI.pptm',
+  '45_TẠI SAO TƯ VẤN BẢO HIỂM THẤT BẠI VỚI NGHỀ.pptx',
+  '46_TRÌNH BÀY ĐỂ KHÁCH HÀNG DỄ HIỂU VỀ.pptx',
+  '47_THÔNG MINH CẢM XÚC TẠO THÀNH CÔNG.pptx',
+  '48_ĐƯỜNG ĐẾN THÀNH CÔNG.pptx',
+  '49_BÀI HỌC TỪ LOÀI ONG.pptx',
+  '5 CÁCH VƯỢT QUA CĂNG THẲNG.pptx',
+  '5_5 BÀI HỌC QUÝ PHÁT TRIỂN BẢN THÂN.pptx',
+  '50_YẾU TỐ TÂM LÝ QUYẾT ĐỊNH THAM GIA BẢO HIỂM.pptx',
+  '51_YẾU TỐ LẮNG NGHE CHO LÃNH ĐẠO.pptx',
+  '52_LÃNH ĐẠO 360°.pptx',
+  '53_NHỮNG THỬ THÁCH CỦA NGHỀ TƯ VẤN BẢO HIỂM.pptx',
+  '54_TẠI SAO HỌ KHÔNG THÍCH LÀM TƯ VẤN BẢO HIỂM.pptx',
+  '55_KỸ NĂNG TỰ HỌC.pptx',
+  '56_TƯ DUY PHẢN BIỆN.pptx',
+  '57_TU VAN HUONG NGHIEP 2025.pptx',
+  '58_KỸ NĂNG QUẢN LÝ ÁP LỰC TRONG CÔNG VIỆC.pptx',
+  '59_7 NGUYÊN TẮC BẤT BIẾN TRONG KINH DOANH.pptx',
+  '6_6 TU DUY TRO NEN GIAU CO.pptx',
+  '60_10 NGUYÊN TẮC BÁN HÀNG BẤT BIẾN (1).pptx',
+  '60_10 NGUYÊN TẮC BÁN HÀNG BẤT BIẾN.pptx',
+  '61_THÓI QUEN GIAO TIẾP THÀNH CÔNG.pptx',
+  '62_GÓC NHÌN CUỘC SỐNG.pptx',
+  '63_TẠI SAO DOANH NGHIỆP CẦN THAM GIA BẢO HIỂM CHO NHÂN VIÊN.pptx',
+  '64_BÀI HỌC TAM QUỐC TRONG KINH DOANH.pptx',
+  '65_12 Ý TƯỞNG TƯ VẤN BẢO HIỂM NHÂN THỌ.pptx',
+  '66_BỨC THU CHA GỬI CON TRAI.pptx',
+  '67_BÀI HỌC CUỘC ĐỜI.pptx',
+  '68_10  QUY LUẬT CUỘC ĐỜI.pptx',
+  '69_HỌP 1-1 TRONG KINH DOANH.pptx',
+  '7_7 BAI HOC LÃNH ĐẠO KHÔNG CHỨC DANH.pptx',
+  '70_KỸ NĂNG ĐỌC SÁCH.pptx',
+  '71_ KỸ NĂNG THƯƠNG LƯỢNG - ĐÀM PHÁN.pptx',
+  '72_TU DUY BÁN VÀ CHĂM SÓC KHÁCH HÀNG.pptx',
+  '73_QUẢN TRỊ NHÂN TÀI.pptx',
+  '74_GIẢI PHÁP GIÚP THÚC ĐẨY ĐỘNG LỰC NỘI TẠI.pptx',
+  '75_ĐỜI NGẮN ĐỪNG PHÍ PHẠM.pptx',
+  '76_QUẢN TRỊ THỜI HỔN LOẠN.pptx',
+  '8_8 BÀI HỌC TƯ MESSI.pptx',
+  '9_10 BAI HOC TU BAN CO VUA.pptx',
+  'DISC 4 PHONG CACH CON NGUOI.pdf',
+  'KY NANG CHAT LOC THONG TIN.pptx',
+  'TAI CHINH CA NHAN [Autosaved].pptx',
+  'TAI CHINH CA NHAN.pptx'
+];
+
 const photos = [
   'z7890887856208_a1be2690b31dc35c6c4bf2c075223064.jpg',
   'z7898705007309_8226fa3677355fbdc3b183dc7a25a1ee.jpg',
@@ -1829,7 +2317,7 @@ const photos = [
   'z7898799471369_0f38c0aeb613d5a3b579fb2893bb8fc0.jpg'
 ];
 
-const allPhotos = portraits.concat(babyPhotos, classPhotos, schoolPhotos, familyPhotos, photos);
+const allPhotos = portraits.concat(babyPhotos, classPhotos, schoolPhotos, familyPhotos, birthdayPhotos, youngPhotos, photos);
 
 // ---- GENERIC PHOTO GRID RENDERER ----
 function renderGrid(container, list, labelPrefix, offsetBase) {
@@ -1871,7 +2359,110 @@ renderGrid(document.getElementById('school-grid'), schoolPhotos, 'Hoạt động
 photoOffset += schoolPhotos.length;
 renderGrid(document.getElementById('family-grid'), familyPhotos, 'Cùng gia đình', photoOffset);
 photoOffset += familyPhotos.length;
+
+// ---- BIRTHDAY GALLERY (batched masonry) ----
+const birthdayOffset = photoOffset;
+const BIRTHDAY_BATCH = 24;
+let birthdayShown = 0;
+const birthdayGrid = document.getElementById('birthday-grid');
+const birthdayLoadMoreBtn = document.getElementById('birthday-load-more-btn');
+const birthdayLoadMoreText = document.getElementById('birthday-load-more-text');
+
+function renderBirthdayBatch() {
+  const end = Math.min(birthdayShown + BIRTHDAY_BATCH, birthdayPhotos.length);
+  for (let i = birthdayShown; i < end; i++) {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.setAttribute('role', 'listitem');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-label', `Ảnh sinh nhật số ${i + 1}`);
+
+    const img = document.createElement('img');
+    img.src = birthdayPhotos[i];
+    img.alt = `Ảnh sinh nhật Minh Triết - ${i + 1}`;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'gallery-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.textContent = '🔍';
+
+    item.appendChild(img);
+    item.appendChild(overlay);
+    const idx = birthdayOffset + i;
+    item.addEventListener('click', () => openLightbox(idx));
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLightbox(idx); });
+    birthdayGrid.appendChild(item);
+  }
+  birthdayShown = end;
+  if (birthdayShown >= birthdayPhotos.length) {
+    birthdayLoadMoreBtn.disabled = true;
+    birthdayLoadMoreText.textContent = 'Đã xem hết tất cả ảnh 🎉';
+  } else {
+    birthdayLoadMoreText.textContent = `Xem Thêm (${birthdayPhotos.length - birthdayShown} ảnh còn lại)`;
+  }
+}
+
+renderBirthdayBatch();
+birthdayLoadMoreBtn.addEventListener('click', renderBirthdayBatch);
+photoOffset += birthdayPhotos.length;
+
+// ---- YOUNG CHILDHOOD GRID ----
+renderGrid(document.getElementById('young-grid'), youngPhotos, 'Ảnh Minh Triết còn nhỏ', photoOffset);
+photoOffset += youngPhotos.length;
+
+// ---- YOUNG CHILDHOOD OLD-FORMAT VIDEO DOWNLOADS ----
+const youngDownloadList = document.getElementById('young-download-list');
+youngOldVideos.forEach(src => {
+  const name = decodeURIComponent(src.split('/').pop());
+  const item = document.createElement('div');
+  item.className = 'media-download-item';
+  const label = document.createElement('span');
+  label.className = 'media-name';
+  label.textContent = `🎞️ ${name}`;
+  const link = document.createElement('a');
+  link.className = 'media-dl-btn';
+  link.href = src;
+  link.setAttribute('download', name);
+  link.textContent = 'Tải về';
+  item.appendChild(label);
+  item.appendChild(link);
+  youngDownloadList.appendChild(item);
+});
+
 const albumOffset = photoOffset;
+
+// ---- DOCUMENTS LIST ----
+const docsList = document.getElementById('docs-list');
+const DOC_ICONS = { pdf: '📄', ppt: '📊', pptx: '📊', pptm: '📊' };
+docs.forEach(name => {
+  const ext = name.split('.').pop().toLowerCase();
+  const item = document.createElement('a');
+  item.className = 'doc-item';
+  item.href = DOCS_DIR + name;
+  item.setAttribute('download', name);
+  item.setAttribute('role', 'listitem');
+
+  const icon = document.createElement('span');
+  icon.className = 'doc-icon';
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = DOC_ICONS[ext] || '📎';
+
+  const textWrap = document.createElement('span');
+  const title = document.createElement('span');
+  title.className = 'doc-name';
+  title.textContent = name.replace(/\.[^.]+$/, '');
+  const extTag = document.createElement('span');
+  extTag.className = 'doc-ext';
+  extTag.textContent = ext;
+  textWrap.appendChild(title);
+  textWrap.appendChild(extTag);
+
+  item.appendChild(icon);
+  item.appendChild(textWrap);
+  docsList.appendChild(item);
+});
 
 // ---- ALBUM GALLERY ----
 const BATCH = 20;
